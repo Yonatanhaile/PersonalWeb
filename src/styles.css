@@ -1,0 +1,93 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#6ee7b7;
+  --accent-2:#60a5fa;
+}
+*{box-sizing:border-box}
+.html, html{scroll-behavior:smooth}
+body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Space Grotesk'; background:linear-gradient(180deg,var(--bg),#071023); color:#e6eef6; margin:0;}
+.app{min-height:100vh; display:flex; flex-direction:column}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(4px)}
+.nav .brand{font-weight:700; font-size:1.1rem}
+.nav .controls{display:flex; gap:0.5rem; align-items:center}
+.icon-btn{background:transparent; border:0; color:var(--muted); cursor:pointer; padding:0.25rem 0.5rem}
+.hamburger{display:none; background:transparent; border:0; color:var(--muted); font-size:1.25rem}
+.nav ul{list-style:none; display:flex; gap:0.5rem; margin:0}
+.nav button{background:none; color:var(--muted); border:0; padding:0.5rem 0.75rem; border-radius:6px; cursor:pointer}
+.nav button.active, .nav button:hover{color:var(--accent); background:rgba(100,200,180,0.04)}
+.container{flex:1; max-width:1100px; margin:2rem auto; padding:1rem}
+section{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); padding:1.5rem; border-radius:12px; margin-bottom:1rem; border:1px solid rgba(255,255,255,0.02)}
+section{background:rgba(255,255,255,0.01); padding:1.5rem; border-radius:8px; margin-bottom:1rem}
+.home .lead{color:var(--muted); font-weight:600}
+.hero{display:flex; align-items:center; min-height:320px}
+.hero-grid{display:grid; grid-template-columns:1fr 240px; gap:1.25rem; align-items:center}
+.hero-inner{animation:fadeSlide 700ms ease both}
+.hero-title{font-size:2.2rem; margin:0; font-weight:800; letter-spacing:-0.4px}
+.hero-sub{color:var(--muted); margin-top:0.5rem}
+.accent{color:var(--accent); font-weight:700}
+.cta-row{display:flex; gap:0.75rem; margin-top:1rem}
+.btn{background:var(--accent); color:#042028; padding:0.6rem 0.9rem; border-radius:6px; text-decoration:none}
+.btn.alt{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--accent-2)}
+.badges{margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap}
+.badge{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0.35rem 0.6rem; border-radius:999px; color:var(--muted); font-size:0.85rem; border:1px solid rgba(255,255,255,0.02)}
+.skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:0.5rem; padding:0; margin:1rem 0 0 0}
+.skills-grid li{list-style:none; background:rgba(255,255,255,0.02); padding:0.6rem; border-radius:6px; color:var(--muted)}
+.projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem}
+.project{padding:1rem; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006)); cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease}
+.project-inner{min-width:0}
+.project h4{margin:0 0 0.35rem 0}
+.project p{margin:0; color:var(--muted); font-size:0.95rem}
+.project:hover{transform:translateY(-8px); box-shadow:0 18px 50px rgba(3,8,25,0.6)}
+.project-action{color:var(--accent-2); font-weight:600}
+.small{font-size:0.85rem}
+.contact-info{padding:0; list-style:none; color:var(--muted)}
+.contact-info li{margin:0.45rem 0}
+.contact-link{color:#ffffff; text-decoration:none}
+.contact-link:hover{color:var(--accent)}
+.contact-form{display:grid; gap:0.5rem; margin-top:1rem}
+.contact-form label{display:flex; flex-direction:column; font-size:0.9rem}
+.contact-form input, .contact-form textarea{padding:0.5rem; border-radius:6px; border:1px solid rgba(255,255,255,0.03); background:transparent; color:inherit}
+.footer{display:flex; justify-content:space-between; padding:1rem 2rem; font-size:0.9rem; color:var(--muted)}
+
+/* Modal */
+.modal-backdrop{position:fixed; inset:0; background:linear-gradient(rgba(2,6,23,0.6), rgba(2,6,23,0.8)); display:flex; align-items:center; justify-content:center; z-index:60}
+.modal{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006)); padding:1.25rem; border-radius:12px; width:min(720px,95%); box-shadow:0 18px 60px rgba(2,6,23,0.7)}
+.modal-header{display:flex; justify-content:space-between; align-items:center}
+.modal-body{margin-top:0.5rem}
+
+/* Animations */
+@keyframes fadeSlide{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+
+/* Themes */
+.theme-light{--bg:#f6fafb; --card:#ffffff; --muted:#4b5563; --accent:#0ea5a4; --accent-2:#2563eb; color:#0b1220}
+.theme-light body{background:var(--bg)}
+
+/* Responsive nav */
+@media (max-width:800px){
+  .hamburger{display:inline-block}
+  .nav ul{position:fixed; right:0; top:64px; background:linear-gradient(180deg, rgba(12,18,30,0.98), rgba(8,12,20,0.98)); width:220px; height:calc(100% - 64px); transform:translateX(100%); transition:transform 220ms ease; flex-direction:column; padding:1rem}
+  .nav.open ul, .nav ul.show{transform:none}
+  .nav .brand{z-index:70}
+}
+
+/* Avatar */
+.hero-avatar{display:flex; align-items:center; justify-content:center}
+.avatar-inner{width:120px; height:120px; border-radius:20px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(96,165,250,0.08), rgba(110,231,183,0.06)); border:1px solid rgba(255,255,255,0.04); box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+/* Buttons & Focus */
+.btn{transition:transform 160ms ease, box-shadow 160ms ease}
+.btn:focus, .icon-btn:focus, .nav button:focus{outline:3px solid rgba(96,165,250,0.12); outline-offset:4px}
+.btn:active{transform:translateY(1px)}
+
+/* Footer polish */
+.footer{display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:space-between; padding:1.25rem 2rem; font-size:0.95rem; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02)}
+.foot-links a{margin-left:0.75rem; color:var(--muted); text-decoration:none}
+.foot-links a:hover{color:var(--accent)}
+
+
+@media (max-width:600px){
+  .nav ul{display:none}
+  .container{margin:1rem}
+}
