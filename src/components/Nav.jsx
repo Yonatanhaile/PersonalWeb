@@ -1,23 +1,63 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Nav = ({ current, onNavigate, dark, setDark }) => {
   const [open, setOpen] = useState(false)
   const items = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'about', label: 'About' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: '🏠 Home', icon: '🏠' },
+    { id: 'services', label: '💼 Services', icon: '💼' },
+    { id: 'about', label: '👤 About', icon: '👤' },
+    { id: 'portfolio', label: '📁 Portfolio', icon: '📁' },
+    { id: 'contact', label: '📬 Contact', icon: '📬' },
   ]
 
-  const goto = (id) => { onNavigate(id); setOpen(false) }
+  const goto = (id) => { 
+    onNavigate(id)
+    setOpen(false)
+  }
+
+  // Close menu when clicking outside on mobile
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (open && !e.target.closest('.nav')) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [open])
+
+  // Prevent body scroll when menu is open on mobile
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => { document.body.style.overflow = 'unset' }
+  }, [open])
 
   return (
     <nav className={"nav " + (open ? 'open' : '')}>
-      <div className="brand">Yonatan</div>
+      <div className="brand" onClick={() => goto('home')} style={{cursor: 'pointer'}}>
+        Yonatan
+      </div>
       <div className="controls">
-        <button className="icon-btn" onClick={() => setDark(!dark)} aria-label="Toggle theme">{dark ? '🌙' : '☀️'}</button>
-        <button className="hamburger" onClick={() => setOpen(!open)} aria-label="Toggle menu">☰</button>
+        <button 
+          className="icon-btn" 
+          onClick={() => setDark(!dark)} 
+          aria-label="Toggle theme"
+          title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {dark ? '🌙' : '☀️'}
+        </button>
+        <button 
+          className="hamburger" 
+          onClick={() => setOpen(!open)} 
+          aria-label="Toggle menu"
+          aria-expanded={open}
+        >
+          {open ? '✕' : '☰'}
+        </button>
       </div>
       <ul className={open ? 'show' : ''}>
         {items.map(i => (
@@ -25,8 +65,10 @@ const Nav = ({ current, onNavigate, dark, setDark }) => {
             <button
               className={i.id === current ? 'active' : ''}
               onClick={() => goto(i.id)}
+              aria-current={i.id === current ? 'page' : undefined}
             >
-              {i.label}
+              <span style={{display: 'inline-block', minWidth: '24px'}}>{i.icon}</span>
+              <span style={{marginLeft: '0.5rem'}}>{i.label.split(' ')[1]}</span>
             </button>
           </li>
         ))}
