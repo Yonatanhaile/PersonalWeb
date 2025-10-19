@@ -25,6 +25,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
@@ -33,8 +36,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(110, 231, 183, 0.2);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 /* ===== App Layout ===== */
@@ -42,6 +50,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* ===== Navigation ===== */
@@ -169,6 +180,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 3rem 5%;
+  overflow-x: hidden;
 }
 
 /* ===== Sections ===== */
@@ -181,6 +193,9 @@ section {
   box-shadow: var(--shadow-md);
   animation: fadeSlide 0.6s ease both;
   transition: var(--transition);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
 }
 
 section:hover {
@@ -784,14 +799,25 @@ section p {
     font-size: 15px;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   .hamburger {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .nav {
     padding: 1rem 4%;
+  }
+
+  .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .nav ul {
@@ -810,6 +836,7 @@ section p {
     gap: 0.5rem;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
   }
 
   .theme-light .nav ul {
@@ -831,8 +858,9 @@ section p {
   .nav button {
     width: 100%;
     text-align: left;
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    min-height: 50px;
   }
 
   .hero-grid {
@@ -845,8 +873,8 @@ section p {
   }
 
   .avatar-inner {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
   }
 
   .hero-title {
@@ -859,18 +887,21 @@ section p {
 
   .container {
     padding: 2rem 4%;
+    max-width: 100%;
   }
 
   section {
-    padding: 2rem;
+    padding: 2rem 1.75rem;
   }
 
   .projects {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .footer {
@@ -881,77 +912,363 @@ section p {
 
   .foot-links {
     justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .foot-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .cta-row {
+    gap: 1rem;
+  }
+
+  .btn {
+    min-height: 48px;
+  }
+
+  .badges {
+    gap: 0.625rem;
+  }
+
+  .badge {
+    font-size: 0.9rem;
   }
 }
 
 /* Mobile phones */
 @media (max-width: 600px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   .nav {
-    padding: 1rem 5%;
+    padding: 0.875rem 4%;
   }
 
   .nav .brand {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+  }
+
+  .icon-btn, .hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.625rem;
+    font-size: 1.25rem;
   }
 
   .container {
-    padding: 1.5rem 5%;
+    padding: 1.25rem 4%;
+    max-width: 100%;
   }
 
   section {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1.75rem 1.25rem;
+    margin-bottom: 1.25rem;
+    border-radius: 12px;
   }
 
   .hero {
     min-height: auto;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .hero-grid {
+    gap: 1.5rem;
   }
 
   .hero-title {
     font-size: 2rem;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
   }
 
   .hero-sub {
     font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .home .lead {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
   }
 
   section h2 {
-    font-size: 1.75rem;
+    font-size: 1.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
   section h3 {
-    font-size: 1.4rem;
+    font-size: 1.375rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 
   section p {
     font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  section ul {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
   .avatar-inner {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
   }
 
   .avatar-inner svg {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .cta-row {
     flex-direction: column;
     width: 100%;
+    gap: 0.875rem;
   }
 
   .btn {
     width: 100%;
     text-align: center;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badges {
+    gap: 0.625rem;
+    margin-top: 1.25rem;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.875rem;
+    white-space: nowrap;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .skills-grid li {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .projects {
+    gap: 1.25rem;
+  }
+
+  .project {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .project p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .project-action {
+    margin-left: 0;
+    align-self: flex-end;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Contact section mobile fixes */
+  .contact > div {
+    gap: 1.25rem !important;
+  }
+
+  .contact > div > div {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .contact-info li {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    line-height: 1.6;
+  }
+
+  .contact-link {
+    word-break: break-word;
+    font-size: 1rem !important;
+  }
+
+  /* Modal mobile optimization */
+  .modal {
+    width: 92%;
+    max-width: 92%;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-height: 90vh;
+  }
+
+  .modal-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    padding-right: 0.5rem;
+  }
+
+  .modal-header .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .modal-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .modal-body div {
+    margin-top: 1.25rem !important;
+  }
+
+  /* Footer mobile fixes */
+  .footer {
+    padding: 1.75rem 4%;
+    font-size: 0.95rem;
+    gap: 1.25rem;
+  }
+
+  .footer > div {
+    text-align: center;
+  }
+
+  .foot-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .foot-links a {
+    font-size: 1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Navigation mobile fixes */
+  .nav ul {
+    width: 85%;
+    max-width: 320px;
+  }
+
+  .nav button {
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav button span {
+    margin-left: 0.75rem !important;
+  }
+
+  /* Service cards mobile */
+  .services > div > div > div {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .services > div > div > div strong {
+    font-size: 1.05rem !important;
+  }
+
+  .services > div > div > div p {
+    font-size: 0.95rem !important;
+  }
+
+  /* About section mobile */
+  .about ul {
+    margin-left: 1.25rem !important;
+    padding-right: 0;
+  }
+
+  .about ul li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+}
+
+/* Small mobile phones */
+@media (max-width: 380px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 1rem 3%;
+  }
+
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  section h2 {
+    font-size: 1.625rem;
+  }
+
+  section h3 {
+    font-size: 1.25rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav .brand {
+    font-size: 1.15rem;
+  }
+
+  .avatar-inner {
+    width: 130px;
+    height: 130px;
+  }
+
+  .avatar-inner svg {
+    width: 80px;
+    height: 80px;
   }
 
   .badges {
@@ -960,95 +1277,16 @@ section p {
 
   .badge {
     font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .skills-grid li {
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  .project {
-    padding: 1.25rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .project h4 {
-    font-size: 1.2rem;
-  }
-
-  .project-action {
-    margin-left: 0;
-    align-self: flex-end;
-  }
-
-  .contact-info li {
-    font-size: 1rem;
-    padding: 0.5rem 0;
+    padding: 0.45rem 0.75rem;
   }
 
   .modal {
-    width: 95%;
-    padding: 1.5rem;
-    border-radius: 10px;
+    width: 94%;
+    padding: 1.25rem;
   }
 
   .modal-header h3 {
-    font-size: 1.5rem;
-  }
-
-  .modal-body p {
-    font-size: 1rem;
-  }
-
-  .footer {
-    padding: 1.5rem 5%;
-    font-size: 0.9rem;
-  }
-
-  .foot-links {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-}
-
-/* Small mobile phones */
-@media (max-width: 380px) {
-  html {
-    font-size: 13px;
-  }
-
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
-  section h2 {
-    font-size: 1.5rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav .brand {
-    font-size: 1.2rem;
-  }
-
-  .avatar-inner {
-    width: 120px;
-    height: 120px;
-  }
-
-  .avatar-inner svg {
-    width: 70px;
-    height: 70px;
+    font-size: 1.375rem;
   }
 }
 
