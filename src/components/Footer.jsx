@@ -17,7 +17,7 @@ const Footer = () => (
       <a href="mailto:yonatanhaile06@gmail.com" title="Send me an email">
         📧 Email
       </a>
-      <a href="https://www.linkedin.com/in/yonatan-haile" target="_blank" rel="noreferrer" title="Connect on LinkedIn">
+      <a href="https://www.linkedin.com/in/yonatanhaile1/" target="_blank" rel="noreferrer" title="Connect on LinkedIn">
         💼 LinkedIn
       </a>
     </div>

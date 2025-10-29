@@ -101,7 +101,7 @@ personal-website/
 - **Email**: yonatanhaile06@gmail.com
 - **Phone**: +251 914 888 890
 - **GitHub**: [@Yonatanhaile](https://github.com/Yonatanhaile)
-- **LinkedIn**: [Yonatan Haile](https://www.linkedin.com/in/yonatan-haile)
+- **LinkedIn**: [Yonatan Haile](https://www.linkedin.com/in/yonatanhaile1/)
 
 ## 🎯 Key Skills Showcased
 
